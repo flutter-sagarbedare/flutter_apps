@@ -1,3 +1,3 @@
-# assignment_2
+# flutter_assignment_3
 
 A new Flutter project.

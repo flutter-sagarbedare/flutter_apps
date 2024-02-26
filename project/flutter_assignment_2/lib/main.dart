@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:assignment_1/Assignment2.dart';
+import '/Assignment2.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+void main() => runApp(const MyApp());
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget{
+    const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Assignment2(),
-    );
-  }
+    @override
+    Widget build(BuildContext context){
+
+          return const MaterialApp(
+            title: "Assignment 2",
+            home:Assignment2(),
+          );
+
+    }
+
 }

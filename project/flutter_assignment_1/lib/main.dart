@@ -9,13 +9,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home:Scaffold(
-        appBar: AppBar(
-          title: Text("Assignment 1"),
+    return const MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text('Core 2 web'),
         ),
-        body:Center(child: Text("Core 2 web")),        
-      )
+      ),
     );
   }
 }
