@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -29,11 +30,13 @@ class QuestionModel {
 }
 
 class _QuizAppState extends State {
+  bool startScreen = true;
   bool qScreen = true;
   int qIndex = 0;
   int selectedAnswerIndex = -1;
   int numOfCorrectAnswer = 0;
   // int noOfAnswer = 0;
+
 
   List Questions = [
     const QuestionModel(
@@ -42,7 +45,7 @@ class _QuizAppState extends State {
       answer: 2,
     ),
     const QuestionModel(
-      question: "Who create Linux?",
+      question: "Who created Linux?",
       options: ["Linus Torwalds", "Bill Gates", "Denis Ritchie", "Steve Jobs"],
       answer: 0,
     ),
@@ -78,7 +81,7 @@ class _QuizAppState extends State {
     ),
     const QuestionModel(
       question:
-          "In Operating Systems, which of the following is/are CPU scheduling algorithms?",
+          "In Operating Systems, which CPU scheduling algorithms are used?",
       options: [
         "Priority",
         "Round Robin",
@@ -155,7 +158,66 @@ class _QuizAppState extends State {
     }
   }
 
+
   Scaffold onQuestionScreen() {
+    if(startScreen == true){
+      return Scaffold(
+         backgroundColor: const Color.fromRGBO(35, 40, 61, 1),
+        appBar: AppBar(
+            title: const Text(
+              "Quiz App",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            backgroundColor: const Color.fromRGBO(46, 66, 90, 1),
+            centerTitle: true),
+          body:Padding(
+            padding:const EdgeInsets.only(left:40,),
+            child:
+          Column(
+            mainAxisAlignment:MainAxisAlignment.center,
+            crossAxisAlignment:CrossAxisAlignment.center,
+            children:[
+              const Text("Are You Ready??",
+              style:TextStyle(
+                color: Color.fromARGB(160, 245, 245, 245),
+                fontSize:30,
+                fontWeight:FontWeight.w900,
+              ),  
+              ),
+              const SizedBox(height:20),
+              const Text("Click button below to start Quiz",
+              style:TextStyle(
+              color: Color.fromARGB(160, 245, 245, 245),
+              fontSize:22,
+              fontWeight:FontWeight.w600,
+              ),
+              ),
+              const SizedBox(height:25),
+
+              SizedBox(
+                height:50,
+                width:130,
+                child:ElevatedButton(
+                  onPressed:(){
+                    setState((){
+                      startScreen= false;
+                    });
+                  },
+                  child:const Text("Start",
+                  style:TextStyle(
+                    fontSize:20
+                  ),
+                  ),
+                ),
+              ),  
+            ]
+          )
+          ),
+      );
+    }else{
     if (qScreen == true) {
       return Scaffold(
         backgroundColor: const Color.fromRGBO(35, 40, 61, 1),
@@ -199,7 +261,7 @@ class _QuizAppState extends State {
             ),
             SizedBox(
               width: 320,
-              height: 60,
+              height: 70,
               child: Text(
                 Questions[qIndex].question,
                 style: const TextStyle(
@@ -213,7 +275,7 @@ class _QuizAppState extends State {
               height: 30,
             ),
             SizedBox(
-              height: 50,
+              height: 60,
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
@@ -225,7 +287,6 @@ class _QuizAppState extends State {
                 },
                 style: ButtonStyle(
                   backgroundColor: checkAnswer(0),
-                  // MaterialStatePropertyAll<Color>(Colors.orange),
                 ),
                 child: Text(Questions[qIndex].options[0],
                     style: const TextStyle(
@@ -238,7 +299,7 @@ class _QuizAppState extends State {
               height: 20,
             ),
             SizedBox(
-              height: 50,
+              height: 60,
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
@@ -250,7 +311,6 @@ class _QuizAppState extends State {
                 },
                 style: ButtonStyle(
                   backgroundColor: checkAnswer(1),
-                  // backgroundColor:MaterialStatePropertyAll<Color>(Colors.orange),
                 ),
                 child: Text(Questions[qIndex].options[1],
                     style: const TextStyle(
@@ -263,7 +323,7 @@ class _QuizAppState extends State {
               height: 20,
             ),
             SizedBox(
-              height: 50,
+              height: 60,
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
@@ -275,7 +335,6 @@ class _QuizAppState extends State {
                 },
                 style: ButtonStyle(
                   backgroundColor: checkAnswer(2),
-                  // backgroundColor:MaterialStatePropertyAll<Color>(Colors.orange),
                 ),
                 child: Text(Questions[qIndex].options[2],
                     style: const TextStyle(
@@ -288,7 +347,7 @@ class _QuizAppState extends State {
               height: 20,
             ),
             SizedBox(
-              height: 50,
+              height: 60,
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
@@ -300,13 +359,13 @@ class _QuizAppState extends State {
                 },
                 style: ButtonStyle(
                   backgroundColor: checkAnswer(3),
-                  // backgroundColor:MaterialStatePropertyAll<Color>(Colors.orange),
                 ),
                 child: Text(Questions[qIndex].options[3],
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 22,
-                        fontWeight: FontWeight.w400)),
+                        ),
+                        ),
               ),
             ),
             const SizedBox(
@@ -319,14 +378,7 @@ class _QuizAppState extends State {
             setState(() {
               doValidate();
             });
-            // setState(() {
-            //   if (qIndex >= Questions.length - 1) {
-            //     qScreen =false;
-            //   } else {
-            //     qIndex++;
-            //     selectedAnswerIndex = -1;
-            //   }
-            // });
+          
           },
           child: const Icon(
             Icons.send,
@@ -355,10 +407,12 @@ class _QuizAppState extends State {
               const SizedBox(
                 height: 40,
               ),
-              Image.network(
-                  "https://img.freepik.com/premium-vector/winner-trophy-cup-with-ribbon-confetti_51486-122.jpg",
-                  height: 400,
-                  width: 380),
+              Image.asset('images/troffy.jpg',
+                width:380,
+                height:400,
+
+              ),
+            
               const Text(
                 "Congratulations !!!",
                 style: TextStyle(
@@ -368,7 +422,7 @@ class _QuizAppState extends State {
                 ),
               ),
               const SizedBox(
-                height: 13,
+                height: 15,
               ),
               const Text(
                 "Your Score is :",
@@ -378,7 +432,7 @@ class _QuizAppState extends State {
                     color: Colors.white),
               ),
               const SizedBox(
-                width: 13,
+                width: 18,
               ),
               Text(
                 "$numOfCorrectAnswer / ${Questions.length}",
@@ -388,14 +442,7 @@ class _QuizAppState extends State {
                   color: Colors.red,
                 ),
               ),
-              //  Text("$noOfAnswer",),
-              // Text("$noOfAnswer / ${Questions.length}",
-              // style:const TextStyle(
-              //           fontSize:22,
-              //           fontWeight:FontWeight.w600,
-              //           color:Colors.white,
-              // ),
-              // ),
+          
 
               const SizedBox(
                 height: 13,
@@ -414,6 +461,7 @@ class _QuizAppState extends State {
                       qIndex = 0;
                       numOfCorrectAnswer = 0;
                       // noOfAnswer=0;
+                      startScreen=true;
                       qScreen = true;
                       selectedAnswerIndex = -1;
                     });
@@ -426,31 +474,11 @@ class _QuizAppState extends State {
         ),
       );
     }
-  }
-
-  Scaffold firstScreen() {
-    return   Scaffold(
-      appBar: AppBar(
-        title:Text("appbar"),
-      ),
-      body:
-       Center(
-        child:SizedBox(
-          width:150,
-          child:TextField(
-            decoration:InputDecoration(
-              hintText:"Enter you Name",
-              
-            ),
-          ),
-        ),
-       ),
-    );
-  }
+    }
+  } 
 
   @override
   Widget build(BuildContext context) {
-    // return onQuestionScreen();
-    return firstScreen();
+    return onQuestionScreen();
   }
 }
