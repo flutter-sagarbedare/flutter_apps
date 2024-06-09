@@ -1,0 +1,29 @@
+name: expense_managerui
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.3.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  google_fonts: ^6.2.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - img/logo_1.png
+    - img/add_icon.png
+    - img/search_icon.png
+    - img/about_us.png
+    - img/category.png
+    - img/graph.png
+    - img/transaction.png
+    - img/trash.png

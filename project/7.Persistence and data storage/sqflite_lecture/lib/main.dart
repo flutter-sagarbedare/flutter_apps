@@ -37,7 +37,7 @@ class Player{
 Future insertPlayerData(Player obj)async {
   final localDB = await database;
 
-  await localDB.inser(
+  await localDB.insert(
     'Player',
     obj.playerMap(),
     conflictAlgorithm:ConflictAlgorithm.replace,
@@ -60,14 +60,14 @@ Future insertPlayerData(Player obj)async {
   }
 
  void main() async {
-  // runApp(const MainApp());
+  runApp(const MainApp());
 
-  WidgetsFlutterBinding.ensureInitialized();
+  // WidgetsFlutterBinding.ensureInitialized();
 
   // to see path of device you've connected  
-  // String path = await getDatabasesPath();
+  String path = await getDatabasesPath();
   
-  // print(path);
+  print(path);
 
   database =  openDatabase(
     join(await getDatabasesPath(),"PlayerDB.db"),
@@ -110,17 +110,17 @@ Future insertPlayerData(Player obj)async {
 
 }
 
-// class MainApp extends StatelessWidget {
-//   const MainApp({super.key});
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(
-//       home: Scaffold(
-//         body: Center(
-//           child: Text('Hello World!'),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text('Hello World!'),
+        ),
+      ),
+    );
+  }
+}
