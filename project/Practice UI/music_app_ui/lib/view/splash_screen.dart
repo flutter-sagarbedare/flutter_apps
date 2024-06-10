@@ -24,18 +24,17 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Stack(
               children: [
-                Container(
-                  decoration:BoxDecoration(
+                // Container(
                   
-                  ),
-                    child: Image.asset(
+                //     child:
+                     Image.asset(
                   'img/splash_image.png',
                   width: double.maxFinite,
                   height: 648,
                   fit: BoxFit.fill,                 
                 ),
                 
-                ),
+                // ),
                 Container(
                   alignment: Alignment.center,
                   child: Column(
@@ -46,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       Text(
                         "Dancing between \n The shadows \n of rhythm",
                         style: GoogleFonts.inter(
-                          color: Color.fromRGBO(255, 255, 255, 1),
+                          color: const Color.fromRGBO(255, 255, 255, 1),
                           fontSize: 36,
                           fontWeight: FontWeight.w600,
                         ),
@@ -99,7 +98,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           height:50,
                           alignment:Alignment.center,
                           decoration:BoxDecoration(
-                            borderRadius:BorderRadius.all(Radius.circular(19)),
+                            borderRadius:const BorderRadius.all(Radius.circular(19)),
                             border:Border.all(color:Color.fromRGBO(255, 46, 0, 1),
                             ),
                           ),
@@ -107,7 +106,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           style:GoogleFonts.inter(
                               fontSize:20,
                               fontWeight:FontWeight.w600,
-                            color:Color.fromRGBO(255, 46, 0, 1),
+                            color:const Color.fromRGBO(255, 46, 0, 1),
                               
                           ),
                           ),
@@ -121,7 +120,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         style:GoogleFonts.inter(
                           fontSize:14,
                           fontWeight:FontWeight.w600,
-                          color:Color.fromRGBO(197, 194, 194, 1),
+                          color:const Color.fromRGBO(197, 194, 194, 1),
                           
                         ),
                       ),

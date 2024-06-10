@@ -21,11 +21,20 @@ flutter:
   assets:
     - img/splash_image.png
     - img/home.png
+    - img/cart.png
     - img/alone.png
     - img/slide1.png
     - img/smile.png
     - img/alone_in_abyss.png
     - img/dead_inside.png
     - img/heartless.png
+    - img/heartless.jfif
     - img/weare.png
+    - img/song_level.png
+    - img/song_length.png
+    - img/loop.png
+    - img/play.png
+    - img/previous.png
+    - img/next.png
+    - img/sound.png
 
