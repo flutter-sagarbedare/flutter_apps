@@ -111,7 +111,7 @@ class _TodoUiState extends State<TodoUi> {
 
                   // Text("Enter Password"),
                   // const  SizedBox(height:10),
-                  const Text("date"),
+                  const Text("Date"),
 
                   TextField(
                       controller: dateController,
@@ -255,7 +255,7 @@ class _TodoUiState extends State<TodoUi> {
                           // margin:EdgeInsets.all(5),
                           height:110,
                           width:MediaQuery.of(context).size.width,
-                          decoration:BoxDecoration(
+                          decoration:const BoxDecoration(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             borderRadius:BorderRadius.all(
                               Radius.circular(10)
@@ -274,8 +274,13 @@ class _TodoUiState extends State<TodoUi> {
                               Row(
                                   children:[
                                     const SizedBox(width:5),
-                                    Icon(Icons.circle,
-                                    size:80,
+                                    Container(
+                                        height:52,
+                                        width:52,
+                                      decoration:const BoxDecoration(
+                                        shape:BoxShape.circle,
+                                      ),
+                                      child:Image.asset('images/todo_icon.png')
                                     ),
                                     Column(
                                       children:[

@@ -229,7 +229,7 @@ const Color.fromRGBO(250, 232, 250, 1),
                       });
                     },
                     style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
+                      backgroundColor: WidgetStatePropertyAll(
                         Color.fromRGBO(2, 167, 177, 1),
                       ),
                     ),

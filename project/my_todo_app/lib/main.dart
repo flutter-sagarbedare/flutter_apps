@@ -14,30 +14,31 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: TodoUi(name:"sagar"),
+      // home: TodoUi(name:"sagar"),
+      home: TodoUi(),
     );
   }
 }
 
 
-// class TodoUi extends StatefulWidget {
-//   const TodoUi({super.key});
+class TodoUi extends StatefulWidget {
+  const TodoUi({super.key});
 
-//   @override
-//   State createState() => _TodoUiState();
-// }
+  @override
+  State createState() => _TodoUiState();
+}
 
-// class _TodoUiState extends State<TodoUi> {
+class _TodoUiState extends State<TodoUi> {
  
-//   @override
-//   Widget build(BuildContext context) {
-//     return  MaterialApp(
-//       debugShowCheckedModeBanner:false,
-//       home: LoginSignUp(),
+  @override
+  Widget build(BuildContext context) {
+    return  MaterialApp(
+      debugShowCheckedModeBanner:false,
+      home: LoginSignUp(),
      
-//     );  
-//   }
-// }
+    );  
+  }
+}
 
 
 //  Scaffold(
