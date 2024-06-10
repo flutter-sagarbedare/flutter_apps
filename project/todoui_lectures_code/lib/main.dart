@@ -71,6 +71,8 @@ const Color.fromRGBO(250, 232, 250, 1),
             date: dateController.text.trim(),
           ));
         });
+    clearController();
+
       } else {
         setState(() {
           // todomodelObj can be null because used ? in above parameter to assure that data will not be null we use !...
@@ -78,10 +80,12 @@ const Color.fromRGBO(250, 232, 250, 1),
           todomodelObj.description = descriptionController.text.trim();
           todomodelObj.date = dateController.text.trim();
         });
+      clearController();      
+
       }
     }
     // to remove already entered data in to textfield
-    clearController();
+    // clearController();
   }
 
   void clearController() {
@@ -97,11 +101,11 @@ const Color.fromRGBO(250, 232, 250, 1),
   }
 
   void editCard(TodoModelClass todomodelObj) {
+
     titleController.text = todomodelObj.title;
     descriptionController.text = todomodelObj.description;
     dateController.text = todomodelObj.date;
     showBottomSheet(true, todomodelObj);
-    // clearController();
   }
 
   void showBottomSheet(bool doEdit, [TodoModelClass? todomodelObj]) {
@@ -264,7 +268,7 @@ const Color.fromRGBO(250, 232, 250, 1),
                 color: colorList[index % colorList.length],
                 border: Border.all(
                     width: 0.010,
-                     color: const Color.fromARGB(77, 0, 0, 0)),
+                     color: const Color.fromARGB(77, 0, 0, 1)),
                 boxShadow: const [
                   BoxShadow(
                     offset: Offset(0, 10),
@@ -297,29 +301,42 @@ const Color.fromRGBO(250, 232, 250, 1),
                             "https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png",
                           ),
                         ),
+                        const SizedBox(width:15),
                         Column(
+                          crossAxisAlignment:CrossAxisAlignment.start,
                           children: [
                             Text(
                               cardList[index].title,
                               style: GoogleFonts.quicksand(
-                                fontSize: 14,
+                                fontSize: 16,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             const SizedBox(
-                              height: 10,
+                              height: 2,
                             ),
+                            SizedBox(
+                              height:33,
+                              width:245,
+                              child:
+                            Expanded(child: 
                             Text(
-                              cardList[index].description,
-                              style: GoogleFonts.quicksand(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
+                                cardList[index].description,
+                                style: GoogleFonts.quicksand(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                  maxLines:2,
                               ),
-                            ),
+                          )
+                            )
+                                
+                             
                           ],
                         ),
                       ],
                     ),
+                    const SizedBox(height:13),
                     //row 2
                     Row(
                       children: [
@@ -368,6 +385,8 @@ const Color.fromRGBO(250, 232, 250, 1),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
+    clearController();
+
             // passing boolean to call needed function add or edit
             showBottomSheet(false);
           },
