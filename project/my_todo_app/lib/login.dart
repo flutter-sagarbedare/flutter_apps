@@ -6,7 +6,7 @@ import 'TodoUi.dart';
 // import 'main.dart';
 
 class LoginSignUp extends StatefulWidget {
-  LoginSignUp({super.key});
+ const  LoginSignUp({super.key});
   @override
   State<LoginSignUp> createState() => _LoginSignUpState();
 }
@@ -191,6 +191,10 @@ class _LoginSignUpState extends State<LoginSignUp> {
     } else{
       return TodoUi(name:userName_Controller.text);
     }
+  }
+
+  void clearController(){
+    
   }
 
   void logInSignUp(bool flag) {
@@ -416,7 +420,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                         userId:userId_Controller.text,
                         userPassword:userPassword_Controller.text,
                       ));
-                      
+                      clearController();
                       // userName = userName_Controller.text;
                       // userId = userId_Controller.text;
                       // userPassword = userPassword_Controller.text;

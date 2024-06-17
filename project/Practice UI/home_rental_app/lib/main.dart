@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_rental_app/view/splash_screen.dart';
+import 'package:home_rental_app/view/home_screen.dart';
 
 void main() {
   runApp(const MainApp());

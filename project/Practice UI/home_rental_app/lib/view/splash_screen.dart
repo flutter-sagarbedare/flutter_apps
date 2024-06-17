@@ -13,7 +13,7 @@ class SplashScreen extends StatelessWidget{
           mainAxisAlignment:MainAxisAlignment.start,
           children:[
             Image.asset('img/home_splash_image.png',
-            width:390,
+            width:350,
             ),
             const SizedBox(height:18),
             Center(

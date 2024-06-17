@@ -68,7 +68,7 @@ Future insertPlayerData(Player obj)async {
   String path = await getDatabasesPath();
   
   print(path);
-
+  
   database =  openDatabase(
     join(await getDatabasesPath(),"PlayerDB.db"),
     

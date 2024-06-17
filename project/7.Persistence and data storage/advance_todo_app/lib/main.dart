@@ -4,9 +4,25 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:intl/intl.dart';
+import 'login.dart';
 
 
+void main(){
+  runApp(const Login());
+}
 
+class TODOHomeScreen extends StatelessWidget{
+  const TODOHomeScreen({super.key});
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      home:TODOAppUI()
+      // home:Scaffold(
+      //   body:Center(child:Text("Sagar"),),
+      // ),
+    );
+  }
+}
 class TODOAppUI extends StatefulWidget {
   const TODOAppUI({super.key});
   @override
@@ -289,10 +305,13 @@ class _TODOAppUIState extends State<TODOAppUI> {
                           itemCount: 10,
                           itemBuilder: (context, index) {
                             return Slidable(
+                              motion:ScrollMotion(
+
+                              ),
                               closeOnScroll: true,
                               endActionPane: ActionPane(
-                                extentRatio: 0.2,
-                                motion: const DrawerMotion(),
+                                extentRatio: 0.1,
+                                motion: const BehindMotion(),
                                 children: [
                                   Expanded(
                                     child: Column(

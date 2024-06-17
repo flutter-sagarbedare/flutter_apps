@@ -20,3 +20,7 @@ flutter:
   uses-material-design: true
   assets:
     - img/home_splash_image.png
+    - img/home_1.png
+    - img/home_2.png
+    - img/home_1_slide.png
+    - img/nearby.png
