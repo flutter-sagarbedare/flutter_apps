@@ -2,66 +2,80 @@
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'TodoUI1.dart';
+import 'TodoUi.dart';
+import 'main.dart';
 import 'dart:developer';
 
-dynamic loginDatabase;
+dynamic tasksDatabase;
 
-class TODOTasks{
 
+
+Future TodoDatabase()async{
+     tasksDatabase = openDatabase(
+    join(await getDatabasesPath(), "databaseTaskList.db"),
+    version:1,
+    onCreate:(db,version){
+      db.execute(
+        '''
+        CREATE TABLE TodoTable(
+        taskId INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT,
+        description TEXT,
+        date TEXT
+        )
+        '''
+      );
+    },
+  );
+}
+
+Future<void> updateTask(TodoTasks obj)async{
+    final localDB = await tasksDatabase;
+  log("in update task func");
+
+   await localDB.update(
+    "TodoTable",
+    obj.todoMap(),
+    where: 'taskId=?',
+    whereArgs: [obj.taskId],
+  );
+}
+
+Future deleteTask(TodoTasks obj)async{
+  final localDB =await tasksDatabase;
+
+ await localDB.delete(
+    "TodoTable",
+    where:"taskId=?",
+    whereArgs:[obj.taskId],
+  );
+   getData();
 
 }
-// class SignUp{
-//    final String userName;
-//    final String userId;
-//    final String password;
-    
 
-//   const SignUp({
-//     required this.userName,
-//     required this.userId,
-//     required this.password,
-//   });
+Future<void> insertData(TodoTasks obj)async{
+  log("in insert data");
+    final localDB = await tasksDatabase;
+    await localDB.insert(
+      "TodoTable",
+      obj.todoMap(),
+      conflictAlgorithm:ConflictAlgorithm.replace,
+    );
+    getData();
+}
 
-//   Map<String,dynamic> signUpMap(){
-//     return {
-//       'userName':userName,
-//       'userId':userId,
-//       'password':password,
-//     };
-    
-//   } 
-// }
-//  Future insertLoginData(SignUp obj)async{
-//   final localDB = await loginDatabase;
+Future<List<TodoTasks>> getData()async{
+  final localDB = await tasksDatabase;
+  List<Map<String,dynamic>> todoList = await localDB.query("TodoTable");
 
-//   await localDB.insert(
-//     'SignUpUser',
-//     obj.signUpMap(),
-//     conflictAlgorithm:ConflictAlgorithm.replace
-//   );
+  return List.generate(todoList.length, (i){
+      return TodoTasks(
+        taskId:todoList[i]['taskId'],
+        title:todoList[i]['title'],
+        description:todoList[i]['description'],
+        date:todoList[i]['date']
+      );
+  });
+}
 
-//   log(obj.userName);
-//   log(obj.userId);
-//   log(obj.password);
-//  }
-
-// Future<List<SignUp>> getSignUpData() async{
-//   final localDB = await loginDatabase;
-
-//   List<Map<String,dynamic>> listUsersData = await localDB.query("SignUpUser");  
-
-//   return List.generate(
-//     listUsersData.length,
-//     (i){
-      
- 
-//       return SignUp(
-//         userName:listUsersData[i]['userName'],
-//         userId:listUsersData[i]['userId'],
-//         password:listUsersData[i]['password'],
-//       );
-//     }
-//   );
-// }
 

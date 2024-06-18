@@ -27,7 +27,7 @@ class TodoTasks {
   TodoTasks(
       {this.taskId,required this.title, required this.description, required this.date});
 
-  Map<String, String> todoTaksMap() {
+  Map<String, String> todoMap() {
     return {
       'title': title,
       'description': description,
@@ -65,14 +65,14 @@ class _TodoUiState extends State<TodoUi> {
 
   _TodoUiState(this.username);
 
-  // Future<List<TodoTasks>> tasks = getTodoTask();
+  // Future<List<TodoTasks>> tasks = getData();
     @override
     void initState(){
       super.initState();
       Future.delayed(Duration.zero,()async{
         await TodoDatabase();
         await getallTask();
-        await getTodoTask();
+        await getData();
       });
     }
 
@@ -81,7 +81,7 @@ class _TodoUiState extends State<TodoUi> {
   Future getallTask()async{
     // log("In getalltask function");
     // log("length before = ${tasks.length}");
-    List listData = await getTodoTask();
+    List listData = await getData();
     setState((){
       tasks=listData;
     });
@@ -111,8 +111,8 @@ class _TodoUiState extends State<TodoUi> {
             description: descriptionController.text.trim(),
             date: dateController.text.trim(),
           );
-          insertTask(tasksObj);
-          // dynamic obj2= getTodoTask();
+          insertData(tasksObj);
+          // dynamic obj2= getData();
           // log("$obj2");
 
           Navigator.of(context).pop();
@@ -126,23 +126,20 @@ class _TodoUiState extends State<TodoUi> {
     log(tasks.toString());
     
   }
-  void updateTask(TodoTasks obj){
-         log("in update task");
+  void updateTask1(TodoTasks obj){
+         log("in update task in todo .dart");
         titleController.text = obj.title;
         descriptionController.text = obj.description;
         dateController.text = obj.date;
-        // setState((){          
          myBottomSheet(true,obj);
-
-        // });
-        // myBottomSheet(true);
-        // clearController();
+    
   }
     Future pushUpdate(TodoTasks obj)async{
        obj.title=titleController.text;
       obj.description=descriptionController.text;
       obj.date=dateController.text;
-      await  updateTask1(obj);
+      await  updateTask(obj);
+      Navigator.of(context).pop();
       await getallTask();
       setState((){});
    }
@@ -423,9 +420,13 @@ class _TodoUiState extends State<TodoUi> {
                             // TodoTasks obj2 = TodoTasks(
                              
                             // );
+                            // updateTask(obj!);
+                              //  getallTask();
+                               setState((){
+
                                pushUpdate(obj!);
-                               getallTask();
-                               setState((){});
+                              // updateTask1(obj!);
+                               });
                              
                               //  Navigator.of(context).pop();
                               //  clearController();
@@ -537,7 +538,8 @@ class _TodoUiState extends State<TodoUi> {
                                       onTap: () {
                                         // setState((){
                                           log('in icon button');
-                                          updateTask(tasks[index]);
+                                          updateTask1(tasks[index]);
+                                          // updateTask(tasks[index]);
                                         // });
                                         // log("${todoList.length}");
                                       },
@@ -645,7 +647,7 @@ class _TodoUiState extends State<TodoUi> {
                                             "${tasks[index].title}",
                                             maxLines: 2,
                                             style: GoogleFonts.inter(
-                                              fontSize: 14,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.w800,
                                             ),
                                           ),
@@ -659,20 +661,21 @@ class _TodoUiState extends State<TodoUi> {
                                             tasks[index].description,
                                             maxLines: 2,
                                             style: GoogleFonts.inter(
-                                              fontSize: 13,
+                                              fontSize: 14,
                                               fontWeight: FontWeight.w400,
                                             ),
                                           ),
                                         ),
                                         const SizedBox(
-                                          height: 8,
+                                          height: 6,
                                         ),
                                         Text(tasks[index].date,
                                             style: GoogleFonts.inter(
-                                              fontSize: 10,
+                                              fontSize: 9,
                                             )),
                                       ],
                                     ),
+                                    
                                   ]),
                               //   ],
                               // ),
@@ -696,63 +699,3 @@ class _TodoUiState extends State<TodoUi> {
   }
 }
 
-/*
-return Padding(
-                          padding: const EdgeInsets.only(
-                              // top: 0,
-                              left: 10,
-                              right: 10),
-                          child: Column(children: [
-                            Container(
-                              height: 100,
-                              decoration: const BoxDecoration(
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color.fromRGBO(0, 0, 0, 0.08),
-                                    blurRadius: 20,
-                                    spreadRadius: 20,
-                                  ),
-                                ],
-                              ),
-                              child: Column(children: [
-                                Row(children: [
-                                  const SizedBox(width: 16),
-                                  const Icon(Icons.circle, size: 55.5),
-                                  const SizedBox(width: 20),
-                                  Column(
-                                    children: [
-                                      const SizedBox(height: 20),
-                                      Text(
-                                        tasks[index].title,
-                                        style: GoogleFonts.inter(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          tasks[index].description,
-                                          style: GoogleFonts.inter(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ]),
-                                Row(
-                                  children: [
-                                    Text(tasks[index].date),
-                                  ],
-                                )
-                              ]),
-                            ),
-                            const SizedBox(height: 10)
-                          ]
-                          )
-                          );
- */

@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'TodoUI1.dart';
+import 'TodoUi.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
 import 'main.dart';
@@ -215,7 +215,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
            children: [
-            const SizedBox(height:0,),
+            const SizedBox(height:20,),
             Image.asset(
               "images/welcome.png",
               height: 500,
@@ -568,6 +568,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
                       //   });
 
                       setState(() {
+                      
                         createAccount();
                         // clearController();
                         if (accountCreated) {
