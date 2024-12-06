@@ -1,0 +1,42 @@
+name: bicycle_ui
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.5.0-288.0.dev <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - img/bi1.png
+    - img/bi2.png
+    - img/bi3.png
+    - img/bi4.png
+    - img/bicycle_icon.png
+    - img/bicycle_icon2.png
+    - img/botel_icon.png
+    - img/Card1.png
+    - img/card2.png
+    - img/card3.png
+    - img/EXTREME.png
+    - img/forward.png
+    - img/gloves_icon.png
+    - img/helmet.png
+    - img/house.png
+    - img/Rectangle1.png
+    - img/Rectangle11.png
+    - img/search.png
+    - img/shopping-bag.png
+    - img/user.png
+    - img/wallet-add.png
