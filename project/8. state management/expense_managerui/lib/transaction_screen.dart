@@ -26,13 +26,19 @@ class _Transaction_ScreenState extends State<Transaction> {
     Navigator.of(context).pop();
   }
 
-  dynamic addTransaction() {
-    return showModalBottomSheet(
+  dynamic addTransaction() async{
+    return await showModalBottomSheet(
         isScrollControlled: true,
+        shape:const RoundedRectangleBorder(
+          borderRadius:BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(30)),
+        ),
         context: context,
         builder: (context) => Padding(
-              padding: EdgeInsets.only(top: 34, left: 23, right: 23),
+              padding: EdgeInsets.only(top: 34, left: 23, right: 23,
+              bottom:MediaQuery.of(context).viewInsets.bottom
+              ),
               child: Column(
+                mainAxisSize:MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
@@ -61,7 +67,7 @@ class _Transaction_ScreenState extends State<Transaction> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 19),
+                  const SizedBox(height: 12),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -101,16 +107,18 @@ class _Transaction_ScreenState extends State<Transaction> {
                       const SizedBox(
                         height: 4,
                       ),
-                      TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.red,
-                            ),
-                          ),
-                          hintText: "Shopping",
-                        ),
-                      ),
+                      // TextField(
+                      //   decoration: InputDecoration(
+                      //     border: OutlineInputBorder(
+                      //       borderSide: BorderSide(
+                      //         color: Colors.red,
+                      //       ),
+                      //     ),
+                      //     hintText: "Shopping",
+                      //   ),
+                      // ),
+
+                     const DropDownItem(),
                     ],
                   ),
                   const SizedBox(height: 19),
@@ -163,12 +171,16 @@ class _Transaction_ScreenState extends State<Transaction> {
                           ),
                         )),
                       ),
+                      
                     ),
                   ),
+                  const SizedBox(height:5),
                 ],
               ),
             ));
   }
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -204,6 +216,55 @@ class _Transaction_ScreenState extends State<Transaction> {
         },
         // child:
       ),
+      body:ListView.builder(
+        itemCount:10,
+        itemBuilder: (BuildContext context,int index){
+        return GestureDetector(
+          child:Padding(
+          padding:const EdgeInsets.all(10),
+          child:Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment:CrossAxisAlignment.end,
+              children: [
+                Row(
+                  children:[
+                    Image.asset('img/food.png',
+                    width:45,),
+                    const SizedBox(
+                      width:20, 
+                    ),
+                    Column(
+                      crossAxisAlignment:CrossAxisAlignment.start,
+                      children:[
+                        Text("Medicine",
+                        style:GoogleFonts.poppins(
+                          fontSize:19,
+                          fontWeight:FontWeight.w500
+                        ),
+                        ),
+                        Wrap(
+                          children:[Text("This is dummy description of medicine.",                    
+                        style:GoogleFonts.poppins(
+                          fontWeight:FontWeight.w400,
+                          fontSize:12
+                        ))]),
+                      ]
+                    ) 
+                  ],
+                ),
+                Text("1 Aug || 12.23",
+                style:GoogleFonts.poppins(
+                  fontSize:11,
+                  color:Color.fromRGBO(0, 0, 0, 0.6)
+                ),
+                )
+              ],
+            ),
+          ),
+        ),
+        );
+      }),
       appBar: AppBar(
         // backgroundColor: Colors.red,
         leading: Builder(builder: (context) {
@@ -552,6 +613,48 @@ class _Transaction_ScreenState extends State<Transaction> {
     // );
   }
 }
+class DropDownItem extends StatefulWidget{
+  const DropDownItem({super.key});
+  @override
+  State createState()=> _DropDownList();
+}
+
+class _DropDownList extends State<DropDownItem>{
+  String dropDownList = "FOOD";
+  List<String> list = <String>['Food', 'Shopping', 'Medicine', 'Fuel','Entertainment','Other'];
+  //  List<DropdownMenuItem<String>>? dropDownList(){
+  //   List<DropdownMenuItem<String>>? menuItems =const  [
+  //     DropdownMenuItem(child:Text("Food"),value:"Food"),
+  //     DropdownMenuItem(child:Text("Medicine"),value:"Medicine"),
+  //     DropdownMenuItem(child:Text("Shopping"),value:"Shopping"),
+  //     DropdownMenuItem(child:Text("Fuel"),value:"Fuel"),
+  //     DropdownMenuItem(child:Text("Entertainment"),value:"Entertainment"),
+  //     DropdownMenuItem(child:Text("Other"),value:"Other"),
+  //   ];
+  //   return menuItems;
+  // }
+
+  @override
+  Widget build(BuildContext context){
+    return DropdownMenu<String>(
+      width:390,
+      hintText:"Select Category",
+      initialSelection:dropDownList,
+      onSelected:(String? value){
+        setState((){
+          dropDownList = value!;
+        });
+      },
+      dropdownMenuEntries:list.map<DropdownMenuEntry<String>>((String value){
+        return DropdownMenuEntry<String>(value:value,
+        label:value);
+      }).toList(),
+
+    );
+  }
+
+
+  }
 
 // class ListItem extends StatefulWidget{
 //   final String name;

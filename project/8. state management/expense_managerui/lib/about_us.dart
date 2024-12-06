@@ -12,7 +12,11 @@ class _AboutUsState extends State<AboutUs>{
     @override
     Widget build(BuildContext context){
 
-        return Scaffold();
+        return Scaffold(
+          body:Center(
+            child:Text("About us")
+          ),
+        );
     }
 
 }

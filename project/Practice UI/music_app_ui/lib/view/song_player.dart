@@ -1,18 +1,19 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:music_app_ui/view/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
+// ignore: camel_case_types
 class Song_Player_Screen extends StatefulWidget{
   const Song_Player_Screen({super.key});
 
   @override
   State<Song_Player_Screen> createState()=> _Song_Player_ScreenState();
 }
+// ignore: camel_case_types
 class _Song_Player_ScreenState extends State<Song_Player_Screen>{
 
   @override
@@ -26,7 +27,7 @@ class _Song_Player_ScreenState extends State<Song_Player_Screen>{
 
           child:Stack(
             children:[
-              Image.asset('img/alone_in_abyss.png'),
+              Image.asset('img/alone_in_abyss1.png'),
               Center(
                 child:Column(
                   children: [
@@ -50,20 +51,20 @@ class _Song_Player_ScreenState extends State<Song_Player_Screen>{
             ],
             )
           ),
-          Row(
+         const Row(
             
             mainAxisAlignment:MainAxisAlignment.end,
             children:[
               Icon(
                 Icons.ios_share_rounded,
-                color:const Color.fromRGBO(230, 154, 21, 1),
+                color:Color.fromRGBO(230, 154, 21, 1),
                 size:28
 
               ),
-              const SizedBox(width:10),
+              SizedBox(width:10),
             ]
           ),
-          Padding(padding:EdgeInsets.all(12),
+          Padding(padding:const EdgeInsets.all(12),
           child:Row(
             children:[
                Text("Dynamic Warmup |",
@@ -73,7 +74,7 @@ class _Song_Player_ScreenState extends State<Song_Player_Screen>{
                       fontWeight:FontWeight.w400,
                     ),
                     ),
-                    Spacer(flex:1),
+                    const Spacer(flex:1),
                Text("4 min",
                     style:GoogleFonts.inter(
                       fontSize:15,

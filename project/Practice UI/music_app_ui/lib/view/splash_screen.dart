@@ -9,7 +9,7 @@ import '/view/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
-
+  @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
@@ -18,8 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(19, 19, 19, 1),
-      body: Container(
-        child: Column(
+      body:Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Stack(
@@ -28,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   
                 //     child:
                      Image.asset(
-                  'img/splash_image.png',
+                  'img/splash_image1.png',
                   width: double.maxFinite,
                   height: 648,
                   fit: BoxFit.fill,                 
@@ -99,7 +98,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           alignment:Alignment.center,
                           decoration:BoxDecoration(
                             borderRadius:const BorderRadius.all(Radius.circular(19)),
-                            border:Border.all(color:Color.fromRGBO(255, 46, 0, 1),
+                            border:Border.all(color:const Color.fromRGBO(255, 46, 0, 1),
                             ),
                           ),
                           child: Text("Continue with Email",
@@ -132,7 +131,7 @@ class _SplashScreenState extends State<SplashScreen> {
             const SizedBox(height: 20),
             // Text("sagar", style: TextStyle(color: Colors.white)),
           ],
-        ),
+        
       ),
     );
   }

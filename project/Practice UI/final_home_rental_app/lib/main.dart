@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:final_home_rental_app/view/splash_screen.dart';
-import 'package:final_home_rental_app/view/home_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,11 +10,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner:false,
-      home: Scaffold(
-        body:HomeScreen(), 
-             ),
+      home:SplashScreen(),
     );
   }
 }

@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:final_home_rental_app/view/home_screen.dart';
 
-class SplashScreen extends StatelessWidget{
+class SplashScreen extends StatefulWidget{
+  const SplashScreen({super.key});
+  @override
+  State createState() => _SplashScreenState();
 
+}
+class _SplashScreenState extends State{
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -13,9 +18,11 @@ class SplashScreen extends StatelessWidget{
           mainAxisAlignment:MainAxisAlignment.start,
           children:[
             Image.asset('img/home_splash_image.png',
-            width:350,
+            height:631,
+            width:MediaQuery.of(context).size.width,
+            fit:BoxFit.cover
             ),
-            const SizedBox(height:18),
+            const SizedBox(height:22),
             Center(
              child: Text("Lets find your Paradise",
              style:GoogleFonts.poppins(
@@ -33,7 +40,7 @@ class SplashScreen extends StatelessWidget{
               color:const Color.fromRGBO(101,101,101, 1),
              ),
              ),
-             const SizedBox(height:10,),
+             const SizedBox(height:20,),
 
              GestureDetector(
               onTap:(){

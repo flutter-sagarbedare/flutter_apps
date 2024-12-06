@@ -10,7 +10,11 @@ class _CategoryState extends State<Category>{
     @override
     Widget build(BuildContext context){
 
-        return Scaffold();
+        return Scaffold(
+          body:Center(
+            child:Text("Category")
+          ),
+        );
     }
 
 }

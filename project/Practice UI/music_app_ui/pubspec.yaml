@@ -20,12 +20,15 @@ flutter:
   uses-material-design: true
   assets:
     - img/splash_image.png
+    - img/splash_image1.png
     - img/home.png
     - img/cart.png
     - img/alone.png
     - img/slide1.png
+    - img/slide11.png
     - img/smile.png
     - img/alone_in_abyss.png
+    - img/alone_in_abyss1.png
     - img/dead_inside.png
     - img/heartless.png
     - img/heartless.jfif
